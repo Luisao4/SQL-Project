@@ -1,0 +1,50 @@
+Utilizador(
+	_ Codigo _ ,
+	Nome,
+	Plano,
+	Email? ,
+	DataNasc,
+	. Idade . ,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade),
+	{NumTelefone}
+)
+
+
+Funcionario(
+	_ CodigoFun _ ,
+	Nome,
+	Salario,
+	DataNasc,
+	. Idade . ,
+	Email,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade),
+	{NumTelefone}	
+)
+
+Espaço(
+	_ CodEspaco _ ,
+	Nome,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade)
+	)
+
+Fornecedor(
+	_ Nome _ ,
+	Email,
+	Custo,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade) ,
+	Proposito,
+	{NumTelefone}
+)
+
+
+Funcionario --- 1 --- < Treina > === N === Utilizador
+
+Utilizador --- 1 --- < Consulta > --- 1 --- Funcionario
+
+Utilizador === N === < Frequenta > === N === Espaço
+
+Funcionario --- 1 --- < Gere > === 1 === Espaço
+
+Funcionario === N === < Trabalha_Em > === 1=== Espaço
+
+Fornecedor === N === < Fornece > === N === Espaço 

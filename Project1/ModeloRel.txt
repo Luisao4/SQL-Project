@@ -1,0 +1,46 @@
+UTILIZADOR(
+	_ Codigo _ ,
+	Nome,
+	Plano,
+	Email? ,
+	DataNasc,
+	. Idade . ,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade),
+	{NumTelefone},
+	Consulta? --> FUNCIONARIO.CodigoFun ,
+	Frequenta --> ESPAÇO.CodEspaco
+	
+)
+
+
+FUNCIONARIO(
+	_ CodigoFun _ ,
+	Nome,
+	Salario,
+	DataNasc,
+	. Idade . ,
+	Email,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade),
+	{NumTelefone},
+	Treina ? --> UTILIZADOR.Codigo,
+	Gere ? --> ESPAÇO.CodEspaco,
+	TrabalhaEm --> ESPAÇO.CodEspaco
+	
+)
+
+ESPAÇO(
+	_ CodEspaco _ ,
+	Nome,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade),
+	Frequentado --> UTILIZADOR.Codigo
+	)
+
+FORNECEDOR(
+	_ Nome _ ,
+	Email,
+	Custo,
+	Morada( Num, Rua, Andar?, CodPostal, Localidade) ,
+	Proposito,
+	{NumTelefone},
+	Fornece --> ESPAÇO.CodEspaco
+)
